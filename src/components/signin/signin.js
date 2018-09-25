@@ -14,6 +14,7 @@ class SignIn extends Component {
         return (
 
             <Paper>
+                <Typography variant="display2" gutterBottom>Sign In!</Typography>
                 <form>
                     <TextField
                         name="username"
