@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Paper, Typography, Textfield } from "@material-ui/core";
+import { Paper, Typography, TextField } from "@material-ui/core";
 import Button from  "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -15,14 +15,14 @@ class SignIn extends Component {
 
             <Paper>
                 <form>
-                    <Textfield
+                    <TextField
                         name="username"
                         id="username"
                         type="text"
                         label="username"
                         margin="normal"
                     />
-                    <Textfield
+                    <TextField
                         name="password"
                         id="password"
                         type="text"
