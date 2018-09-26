@@ -54,12 +54,12 @@ UserPlant.belongsToMany(ScheduleDay, {through: 'userPlantSchedule'});
 
 UserPlant.belongsTo(User);
 
-// db.sync({
-//     force: true
-//
-// }).then(() => {
+db.sync({
+    force: true
 
-// });
+}).then(() => {
+
+});
 module.exports = {
     'User' : User,
     'UserPlant': UserPlant,
