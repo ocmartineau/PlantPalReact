@@ -1,6 +1,11 @@
 //Initialize NPM packages
-var Sequelize = require('sequelize');
-var db = new Sequelize('plant_pal', 'root', 'calyps0', {
+const Sequelize = require('sequelize');
+const UserModel = require('../models/User');
+const UserPlantModel = require('../models/UserPlant');
+const SystemPlantModel = require('../models/SystemPlant');
+const ScheduleDayModel = require('../models/ScheduleDay');
+
+const db = new Sequelize('plant_pal', 'root', 'calyps0', {
     host: 'localhost',
     dialect: 'mysql',
     operatorsAliases: false,
@@ -14,55 +19,24 @@ var db = new Sequelize('plant_pal', 'root', 'calyps0', {
 });
 
 
-var User = db.define('User', {
-
-    email: {
-        type: Sequelize.STRING,
-        validate: {
-            isEmail: true
-        }
-    },
-    password: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-
-});
-
-var SystemPlant = db.define('systemPlant', {
-    name: {
-        type: Sequelize.STRING
-    }
-});
-
-var UserPlant = db.define('userPlant', {
-    name: {
-        type: Sequelize.STRING
-    }
-});
-
-var ScheduleDay= db.define('scheduleDay', {
-    name: {
-        type: Sequelize.STRING
-    },
-});
+const User = UserModel(db, Sequelize);
+const UserPlant = UserPlantModel(db, Sequelize);
+const SystemPlant = SystemPlantModel(db, Sequelize);
+const ScheduleDay = ScheduleDayModel(db, Sequelize);
 
 ScheduleDay.belongsToMany(UserPlant, {through: 'userPlantSchedule'});
 UserPlant.belongsToMany(ScheduleDay, {through: 'userPlantSchedule'});
-
-
-
 UserPlant.belongsTo(User);
 
 db.sync({
     force: true
 
 }).then(() => {
-
+    console.log("Database Created!")
 });
 module.exports = {
     'User' : User,
     'UserPlant': UserPlant,
-    "SystemoPlant": SystemPlant,
+    "SystemPlant": SystemPlant,
     "ScheduleDay": ScheduleDay
 };
