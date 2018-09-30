@@ -1,9 +1,9 @@
 //Initialize NPM packages
 const Sequelize = require('sequelize');
-const UserModel = require('../models/User');
-const UserPlantModel = require('../models/UserPlant');
-const SystemPlantModel = require('../models/SystemPlant');
-const ScheduleDayModel = require('../models/ScheduleDay');
+const UserModel = require('./models/User');
+const UserPlantModel = require('./models/UserPlant');
+const SystemPlantModel = require('./models/SystemPlant');
+const ScheduleDayModel = require('./models/ScheduleDay');
 
 const db = new Sequelize('plant_pal', 'root', 'calyps0', {
     host: 'localhost',

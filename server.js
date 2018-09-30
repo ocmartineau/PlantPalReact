@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const env = require('dotenv').load();
 const mysql2 = require("mysql2");
-const db = require('./config/database/models/db');
+const db = require('./config/database/db');
 // Requiring passport as we've configured it
 const passport = require("passport");
 // Setting up port and requiring models for syncing
