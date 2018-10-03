@@ -19,10 +19,17 @@ const db = new Sequelize('plant_pal', 'root', 'calyps0', {
 });
 
 
+// LIST TEH TABLES THAT YOU KNOW IT SHOULD BE
+//Users, UserPlant, SystemPlant, ScheduleDay
+//SO THIS IS THE ONLY EXTRA?
+//that and it looks like theres an extra Users table
+
+
 const User = UserModel(db, Sequelize);
 const UserPlant = UserPlantModel(db, Sequelize);
 const SystemPlant = SystemPlantModel(db, Sequelize);
 const ScheduleDay = ScheduleDayModel(db, Sequelize);
+
 
 ScheduleDay.belongsToMany(UserPlant, {through: 'userPlantSchedule'});
 UserPlant.belongsToMany(ScheduleDay, {through: 'userPlantSchedule'});
